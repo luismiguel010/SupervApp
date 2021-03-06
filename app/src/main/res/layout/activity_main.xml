@@ -12,7 +12,7 @@
     <!--After the implementation the Floating Action Button
          at the bottom right corner-->
     <!--After clicking the above button the following two buttons
-        will pop up. So this button is considered as parent FAB-->
+        will pop up. Sssh-keygen -t rsa -C "your_email@example.com"o this button is considered as parent FAB-->
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/add_fab"
         android:layout_width="wrap_content"
