@@ -9,6 +9,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AlertDialog;
 import co.com.luis.supervapp.R;
 import co.com.luis.supervapp.domain.models.Proyecto;
+import co.com.luis.supervapp.infraestructures.queries.ProyectoQuery;
 
 public class ProyectoDialog {
 
@@ -34,7 +35,8 @@ public class ProyectoDialog {
                 nombreProyecto = inputNombre.getText().toString();
                 constructora = inputConstructora.getText().toString();
                 proyecto = new Proyecto(nombreProyecto, constructora);
-                //Aquí guardad en database
+                ProyectoQuery proyectoQuery = new ProyectoQuery();
+                proyectoQuery.insertProyecto(context, proyecto);
             }
         });
         builder.setNegativeButton(context.getString(R.string.cancelar), new DialogInterface.OnClickListener() {

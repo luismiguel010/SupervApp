@@ -66,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
     private void showProyectoDialog() {
         Context context = this;
         ProyectoDialog proyectoDialog = new ProyectoDialog();
-        proyecto = proyectoDialog.showTextDialog(context);
+        proyectoDialog.showTextDialog(context);
         System.out.println(proyecto);
     }
 
