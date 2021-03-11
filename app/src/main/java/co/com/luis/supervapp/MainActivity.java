@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -41,14 +42,13 @@ public class MainActivity extends AppCompatActivity {
         addAlarmActionText = findViewById(R.id.add_alarm_action_text);
         mAddAlarmFab.setVisibility(View.GONE);
         addAlarmActionText.setVisibility(View.GONE);
+        proyectolist= new ArrayList<>();
         recyclerView = (RecyclerView) findViewById(R.id.recyclerview);
         isAllFabsVisible = false;
-        recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
 
-        proyectolist = new ArrayList<Proyecto>();
-        for(int i = 0; i <=10; i++){
-            proyectolist.add(new Proyecto("Proyecto" + i, "Constructora "+i));
-        }
+        recyclerView.setLayoutManager(new GridLayoutManager(this, 4));
+
+        llenarProyectos();
         AdapterProyectos adapterProyectos = new AdapterProyectos(proyectolist);
         recyclerView.setAdapter(adapterProyectos);
 
@@ -75,6 +75,13 @@ public class MainActivity extends AppCompatActivity {
                         showProyectoDialog();
                     }
                 });
+    }
+
+    private void llenarProyectos(){
+        proyectolist.add(new Proyecto("Luna Azul","Construgarpe"));
+        proyectolist.add(new Proyecto("Luna Verde","Construgarcu"));
+        proyectolist.add(new Proyecto("Luna Roja","Contructora"));
+        proyectolist.add(new Proyecto("Luna Amarilla","Contructora"));
     }
 
     private void showProyectoDialog() {

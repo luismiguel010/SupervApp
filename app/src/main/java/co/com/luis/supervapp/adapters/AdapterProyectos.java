@@ -3,6 +3,7 @@ package co.com.luis.supervapp.adapters;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -31,8 +32,8 @@ public class AdapterProyectos extends RecyclerView.Adapter<AdapterProyectos.View
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolderProyecto holder, int position) {
-        holder.asignarProyectos(proyectolist.get(position));
-
+        holder.nombre.setText(proyectolist.get(position).getNombre());
+        holder.constructora.setText(proyectolist.get(position).getConstructura());
     }
 
     @Override
@@ -42,18 +43,12 @@ public class AdapterProyectos extends RecyclerView.Adapter<AdapterProyectos.View
 
     public class ViewHolderProyecto extends RecyclerView.ViewHolder {
 
-        TextView nombre;
-        TextView constructora;
+        TextView nombre, constructora;
 
         public ViewHolderProyecto(@NonNull View itemView) {
             super(itemView);
             nombre = (TextView) itemView.findViewById(R.id.nombre);
             constructora = (TextView) itemView.findViewById(R.id.contructora);
-        }
-
-        public void asignarProyectos(Proyecto proyecto) {
-            nombre.setText(proyecto.getNombre());
-            constructora.setText(proyecto.getConstructura());
         }
     }
 }
