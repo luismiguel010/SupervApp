@@ -6,22 +6,22 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
 
-public class DBHelper extends SQLiteOpenHelper {
-    private static final String PROYECTO_TABLE_CREATE = "CREATE TABLE proyecto(id INTEGER PRIMARY KEY AUTOINCREMENT, nombre TEXT, constructuro TEXT)";
-    private static final String DB_NAME = "proyectos.sqlite";
-    private static final int DB_VERSION = 1;
+import co.com.luis.supervapp.utilidades.Utilidades;
 
-    public DBHelper(@Nullable Context context) {
-        super(context, DB_NAME, null, DB_VERSION);
+public class DBHelper extends SQLiteOpenHelper {
+
+    public DBHelper(@Nullable Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
+        super(context, name, factory, version);
     }
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
-        sqLiteDatabase.execSQL(PROYECTO_TABLE_CREATE);
+        sqLiteDatabase.execSQL(Utilidades.CREAR_TABLA_PROYECTO);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int oldVersion, int newVersion) {
-
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS "+Utilidades.TABLA_PROYECTOS);
+        onCreate(sqLiteDatabase);
     }
 }

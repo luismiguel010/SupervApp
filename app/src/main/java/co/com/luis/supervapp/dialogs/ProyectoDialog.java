@@ -7,8 +7,13 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
+import androidx.recyclerview.widget.RecyclerView;
+
+import co.com.luis.supervapp.MainActivity;
 import co.com.luis.supervapp.R;
+import co.com.luis.supervapp.adapters.AdapterProyectos;
 import co.com.luis.supervapp.domain.models.Proyecto;
+import co.com.luis.supervapp.infraestructures.DBHelper;
 import co.com.luis.supervapp.infraestructures.queries.ProyectoQuery;
 
 public class ProyectoDialog {
@@ -16,8 +21,10 @@ public class ProyectoDialog {
     Proyecto proyecto;
     String nombreProyecto;
     String constructora;
+    RecyclerView recyclerView;
+    AdapterProyectos adapterProyectos;
 
-    public void showTextDialog(final Context context){
+    public void showTextDialog(final Context context, final DBHelper dbHelper){
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
         LinearLayout layout = new LinearLayout(context);
         layout.setOrientation(LinearLayout.VERTICAL);
@@ -36,7 +43,9 @@ public class ProyectoDialog {
                 constructora = inputConstructora.getText().toString();
                 proyecto = new Proyecto(nombreProyecto, constructora);
                 ProyectoQuery proyectoQuery = new ProyectoQuery();
-                proyectoQuery.insertProyecto(context, proyecto);
+                proyectoQuery.insertProyecto(context, proyecto, dbHelper);
+                MainActivity mainActivity = new MainActivity();
+                mainActivity.actualizarLista();
             }
         });
         builder.setNegativeButton(context.getString(R.string.cancelar), new DialogInterface.OnClickListener() {

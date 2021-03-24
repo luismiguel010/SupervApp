@@ -1,17 +1,29 @@
 package co.com.luis.supervapp.infraestructures.entities;
 
 
-public class ProyectoEntity {
+import java.io.Serializable;
 
-    String nombre;
-    String constructura;
+public class ProyectoEntity implements Serializable {
+
+    private Integer id;
+    private String nombre;
+    private String constructura;
 
     public ProyectoEntity() {
     }
 
-    public ProyectoEntity(String nombre, String constructura) {
+    public ProyectoEntity(Integer id, String nombre, String constructura) {
+        this.id = id;
         this.nombre = nombre;
         this.constructura = constructura;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getNombre() {
@@ -29,4 +41,5 @@ public class ProyectoEntity {
     public void setConstructura(String constructura) {
         this.constructura = constructura;
     }
+
 }

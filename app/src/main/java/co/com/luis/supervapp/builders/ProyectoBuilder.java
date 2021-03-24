@@ -13,4 +13,8 @@ public class ProyectoBuilder {
         }
         return proyectoEntity;
     }
+
+    public Proyecto convertirAModel(ProyectoEntity proyectoEntity){
+        return new Proyecto(proyectoEntity.getNombre(), proyectoEntity.getConstructura());
+    }
 }

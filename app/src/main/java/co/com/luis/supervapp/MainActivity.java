@@ -23,15 +23,18 @@ import java.util.ArrayList;
 import co.com.luis.supervapp.adapters.AdapterProyectos;
 import co.com.luis.supervapp.dialogs.ProyectoDialog;
 import co.com.luis.supervapp.domain.models.Proyecto;
+import co.com.luis.supervapp.infraestructures.DBHelper;
+import co.com.luis.supervapp.infraestructures.queries.ProyectoQuery;
 
 public class MainActivity extends AppCompatActivity {
 
     FloatingActionButton mAddFab, mAddAlarmFab;
     TextView addAlarmActionText;
     Boolean isAllFabsVisible;
-    Proyecto proyecto;
     ArrayList<Proyecto> proyectolist;
     RecyclerView recyclerView;
+    DBHelper dbHelper;
+    Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,12 +46,14 @@ public class MainActivity extends AppCompatActivity {
         mAddAlarmFab.setVisibility(View.GONE);
         addAlarmActionText.setVisibility(View.GONE);
         proyectolist= new ArrayList<>();
-        recyclerView = (RecyclerView) findViewById(R.id.recyclerview);
+        dbHelper = new DBHelper(getApplicationContext(), "db_proyecto", null, 1);
         isAllFabsVisible = false;
-
+        recyclerView = (RecyclerView) findViewById(R.id.recyclerview);
         recyclerView.setLayoutManager(new GridLayoutManager(this, 4));
+        context = getApplicationContext();
 
-        llenarProyectos();
+        proyectolist = obtenerTodosLosProyectos();
+
         AdapterProyectos adapterProyectos = new AdapterProyectos(proyectolist);
         recyclerView.setAdapter(adapterProyectos);
 
@@ -77,18 +82,22 @@ public class MainActivity extends AppCompatActivity {
                 });
     }
 
-    private void llenarProyectos(){
-        proyectolist.add(new Proyecto("Luna Azul","Construgarpe"));
-        proyectolist.add(new Proyecto("Luna Verde","Construgarcu"));
-        proyectolist.add(new Proyecto("Luna Roja","Contructora"));
-        proyectolist.add(new Proyecto("Luna Amarilla","Contructora"));
+    public ArrayList<Proyecto> obtenerTodosLosProyectos(){
+        ProyectoQuery proyectoQuery = new ProyectoQuery();
+        return proyectoQuery.getAllProyectos(dbHelper);
+    }
+
+    public void actualizarLista(){
+        proyectolist = obtenerTodosLosProyectos();
+        AdapterProyectos adapterProyectos = new AdapterProyectos(proyectolist);
+        recyclerView.setAdapter(adapterProyectos);
+        recyclerView.invalidate();
     }
 
     private void showProyectoDialog() {
         Context context = this;
         ProyectoDialog proyectoDialog = new ProyectoDialog();
-        proyectoDialog.showTextDialog(context);
-        System.out.println(proyecto);
+        proyectoDialog.showTextDialog(context, dbHelper);
     }
 
 
