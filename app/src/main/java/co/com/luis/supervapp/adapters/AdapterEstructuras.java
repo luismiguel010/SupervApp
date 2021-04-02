@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
 import co.com.luis.supervapp.R;
+import co.com.luis.supervapp.activities.CheckBoxElementosActivity;
 import co.com.luis.supervapp.activities.EstructurasActivity;
 import co.com.luis.supervapp.domain.models.Estructura;
 
@@ -37,14 +38,14 @@ public class AdapterEstructuras extends RecyclerView.Adapter<AdapterEstructuras.
     @Override
     public void onBindViewHolder(@NonNull AdapterEstructuras.ViewHolderEstructura holder, final int position) {
         holder.nombre.setText(estructurasList.get(position).getNombre());
-/**        holder.itemView.setOnClickListener(new View.OnClickListener() {
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(context, ElementosActivity.class);
+                Intent intent = new Intent(context, CheckBoxElementosActivity.class);
                 intent.putExtra("nombre_estructura", estructurasList.get(position).getNombre());
                 context.startActivity(intent);
             }
-        });*/
+        });
 
     }
 
