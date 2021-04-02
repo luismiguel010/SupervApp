@@ -22,7 +22,7 @@ public class ProyectoQuery {
     public void insertProyecto(Context context, Proyecto proyecto, DBHelper dbHelper){
         ProyectoBuilder proyectoBuilder = new ProyectoBuilder();
         ProyectoEntity proyectoEntity = proyectoBuilder.convertirAEntity(proyecto);
-        dbHelper = new DBHelper(context, Utilidades.NOMBRE_BASEDEDATOS, null, 1);
+        dbHelper = new DBHelper(context, Utilidades.NOMBRE_BASEDEDATOS, null, Utilidades.VERSION_BASE_DE_DATOS);
         SQLiteDatabase sqLiteDatabase = dbHelper.getWritableDatabase();
         if(sqLiteDatabase != null){
             ContentValues contentValues = new ContentValues();

@@ -48,7 +48,7 @@ public class EstructurasActivity extends AppCompatActivity {
         mAddAlarmFab.setVisibility(View.GONE);
         addAlarmActionText.setVisibility(View.GONE);
         estructurasList = new ArrayList<>();
-        dbHelper = new DBHelper(getApplicationContext(), Utilidades.NOMBRE_BASEDEDATOS, null, 1);
+        dbHelper = new DBHelper(getApplicationContext(), Utilidades.NOMBRE_BASEDEDATOS, null, Utilidades.VERSION_BASE_DE_DATOS);
         isAllFabsVisible = false;
         recyclerView = (RecyclerView) findViewById(R.id.recyclerview_estructuras);
         recyclerView.setLayoutManager(new GridLayoutManager(this, 4));

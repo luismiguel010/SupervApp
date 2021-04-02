@@ -58,4 +58,18 @@
         android:layout_height="wrap_content"
         android:text="@string/elemento_mamposteria_estructural"
         android:onClick="onCheckboxClicked"/>
+
+
+
+    <Button
+        android:id="@+id/button_add_elementos"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/anadir" />
+
+    <Button
+        android:id="@+id/button_cancelar_elementos"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/cancelar" />
 </LinearLayout>

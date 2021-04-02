@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
         mAddAlarmFab.setVisibility(View.GONE);
         addAlarmActionText.setVisibility(View.GONE);
         proyectolist= new ArrayList<>();
-        dbHelper = new DBHelper(getApplicationContext(), Utilidades.NOMBRE_BASEDEDATOS, null, 1);
+        dbHelper = new DBHelper(getApplicationContext(), Utilidades.NOMBRE_BASEDEDATOS, null, Utilidades.VERSION_BASE_DE_DATOS);
         isAllFabsVisible = false;
         recyclerView = (RecyclerView) findViewById(R.id.recyclerview);
         recyclerView.setLayoutManager(new GridLayoutManager(this, 4));

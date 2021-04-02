@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.CheckBox;
 
 import java.util.ArrayList;
@@ -13,12 +14,22 @@ import co.com.luis.supervapp.R;
 
 public class CheckBoxElementosActivity extends AppCompatActivity {
 
+    private Button buttonAnadir, buttonCancelar;
     List<String> elementosList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_check_box_elementos);
+        buttonAnadir = findViewById(R.id.button_add_elementos);
+        buttonCancelar = findViewById(R.id.button_cancelar_elementos);
+
+        buttonAnadir.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
     }
 
     public void onCheckboxClicked(View view) {

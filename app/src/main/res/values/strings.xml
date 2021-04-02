@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">SupervApp</string>
     <string name="crear">Crear</string>
+    <string name="anadir">Añadir</string>
     <string name="cancelar">Cancelar</string>
     <string name="ingresedatosdelproyecto">Ingrese los datos del proyecto</string>
     <string name="ingresedatosdelaestructura">Ingrese los datos de la estructura</string>

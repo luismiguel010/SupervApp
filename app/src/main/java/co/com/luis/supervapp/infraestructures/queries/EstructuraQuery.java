@@ -23,7 +23,7 @@ public class EstructuraQuery {
     public void insertEstructura(Context context, Estructura estructura, DBHelper dbHelper){
         EstructuraBuilder estructuraBuilder = new EstructuraBuilder();
         EstructuraEntity estructuraEntity = estructuraBuilder.convertirAEntity(estructura);
-        dbHelper = new DBHelper(context, Utilidades.NOMBRE_BASEDEDATOS, null, 1);
+        dbHelper = new DBHelper(context, Utilidades.NOMBRE_BASEDEDATOS, null, Utilidades.VERSION_BASE_DE_DATOS);
         SQLiteDatabase sqLiteDatabase = dbHelper.getWritableDatabase();
         if(sqLiteDatabase != null){
             ContentValues contentValues = new ContentValues();
