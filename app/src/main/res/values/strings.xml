@@ -8,4 +8,15 @@
     <string name="nombreconstructora">Nombre de la constructora</string>
     <string name="ingresetodoslosdatos">Ingrese todos los datos por favor.</string>
     <string name="nombreestructura">Nombre de la estructura</string>
+    <string name="elemento_pilas">Pilas</string>
+    <string name="elemento_zapatas">Zapatas</string>
+    <string name="elemento_micropilotes">Micropilotes</string>
+    <string name="elemento_vigas_de_fundacion">Vigas de Fundación</string>
+    <string name="elemento_losas_de_fundacion">Losas de Fundación</string>
+    <string name="elemento_muros_de_contencion">Muros de Contención</string>
+    <string name="elemento_muros_estructurales">Muros Estructurales</string>
+    <string name="elemento_columnas">Columnas</string>
+    <string name="elemento_losas">Losas</string>
+    <string name="elemento_mamposteria_no_estructural">Mampostería No Estructural</string>
+    <string name="elemento_mamposteria_estructural">Mampostería Estructural</string>
 </resources>
