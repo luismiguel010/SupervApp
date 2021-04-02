@@ -17,11 +17,13 @@ public class DBHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         sqLiteDatabase.execSQL(Utilidades.CREAR_TABLA_PROYECTO);
+        sqLiteDatabase.execSQL(Utilidades.CREAR_TABLA_ESTRUCTURA);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int oldVersion, int newVersion) {
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS "+Utilidades.TABLA_PROYECTOS);
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS "+Utilidades.TABLA_ESTRUCTURAS);
         onCreate(sqLiteDatabase);
     }
 }

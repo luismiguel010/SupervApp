@@ -13,6 +13,7 @@ import java.util.UUID;
 import co.com.luis.supervapp.builders.ProyectoBuilder;
 import co.com.luis.supervapp.domain.models.Proyecto;
 import co.com.luis.supervapp.infraestructures.DBHelper;
+import co.com.luis.supervapp.infraestructures.entities.EstructuraEntity;
 import co.com.luis.supervapp.infraestructures.entities.ProyectoEntity;
 import co.com.luis.supervapp.utilidades.Utilidades;
 
@@ -21,7 +22,7 @@ public class ProyectoQuery {
     public void insertProyecto(Context context, Proyecto proyecto, DBHelper dbHelper){
         ProyectoBuilder proyectoBuilder = new ProyectoBuilder();
         ProyectoEntity proyectoEntity = proyectoBuilder.convertirAEntity(proyecto);
-        dbHelper = new DBHelper(context, "db_proyecto", null, 1);
+        dbHelper = new DBHelper(context, Utilidades.NOMBRE_BASEDEDATOS, null, 1);
         SQLiteDatabase sqLiteDatabase = dbHelper.getWritableDatabase();
         if(sqLiteDatabase != null){
             ContentValues contentValues = new ContentValues();
@@ -49,5 +50,18 @@ public class ProyectoQuery {
             proyectos.add(proyecto);
         }
         return proyectos;
+    }
+
+    public ProyectoEntity getProyectoByNombre(DBHelper dbHelper, String nombreProyecto){
+        SQLiteDatabase sqLiteDatabase = dbHelper.getReadableDatabase();
+        ProyectoEntity proyectoEntity = null;
+        Cursor cursor = sqLiteDatabase.rawQuery("SELECT * FROM "+Utilidades.TABLA_PROYECTOS+" WHERE nombre=?", new String[]{nombreProyecto});
+        while (cursor.moveToNext()){
+            proyectoEntity = new ProyectoEntity();
+            proyectoEntity.setId(cursor.getInt(0));
+            proyectoEntity.setNombre(cursor.getString(1));
+            proyectoEntity.setConstructura(cursor.getString(2));
+        }
+        return proyectoEntity;
     }
 }

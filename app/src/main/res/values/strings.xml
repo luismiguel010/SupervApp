@@ -3,7 +3,9 @@
     <string name="crear">Crear</string>
     <string name="cancelar">Cancelar</string>
     <string name="ingresedatosdelproyecto">Ingrese los datos del proyecto</string>
+    <string name="ingresedatosdelaestructura">Ingrese los datos de la estructura</string>
     <string name="nombreproyecto">Nombre del proyecto</string>
     <string name="nombreconstructora">Nombre de la constructora</string>
     <string name="ingresetodoslosdatos">Ingrese todos los datos por favor.</string>
+    <string name="nombreestructura">Nombre de la estructura</string>
 </resources>
