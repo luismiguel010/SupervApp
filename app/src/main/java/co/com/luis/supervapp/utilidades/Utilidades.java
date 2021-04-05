@@ -23,6 +23,7 @@ public class Utilidades {
     //Constantes campos tabla elementos
     //----------------------------------------------------------
     public static final String TABLA_ELEMENTOS = "elemento";
+    public static final String CAMPO_TIPO_ELEMENTO = "tipo_elemento";
     public static final String CAMPO_ID_ESTRUCTURA = "id_estructura";
     //----------------------------------------------------------
     //Constantes creación de tablas
@@ -37,7 +38,7 @@ public class Utilidades {
 
     public static final String CREAR_TABLA_ELEMENTO="CREATE TABLE " +
             ""+TABLA_ELEMENTOS+" ("+CAMPO_ID+" "+
-            "INTEGER, "+CAMPO_NOMBRE+" TEXT,"+CAMPO_ID_ESTRUCTURA+" INTEGER)";
+            "INTEGER, "+CAMPO_NOMBRE+" TEXT, "+CAMPO_TIPO_ELEMENTO+" TEXT,"+CAMPO_ID_ESTRUCTURA+" INTEGER)";
 
 
 }

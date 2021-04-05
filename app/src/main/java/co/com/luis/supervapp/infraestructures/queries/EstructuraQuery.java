@@ -10,9 +10,7 @@ import java.util.ArrayList;
 import java.util.UUID;
 
 import co.com.luis.supervapp.builders.EstructuraBuilder;
-import co.com.luis.supervapp.builders.ProyectoBuilder;
 import co.com.luis.supervapp.domain.models.Estructura;
-import co.com.luis.supervapp.domain.models.Proyecto;
 import co.com.luis.supervapp.infraestructures.DBHelper;
 import co.com.luis.supervapp.infraestructures.entities.EstructuraEntity;
 import co.com.luis.supervapp.infraestructures.entities.ProyectoEntity;
@@ -51,5 +49,18 @@ public class EstructuraQuery {
             estructuras.add(estructura);
         }
         return estructuras;
+    }
+
+    public EstructuraEntity getEstructuraByNombre(DBHelper dbHelper, String nombreEstructura){
+        SQLiteDatabase sqLiteDatabase = dbHelper.getReadableDatabase();
+        EstructuraEntity estructuraEntity = null;
+        Cursor cursor = sqLiteDatabase.rawQuery("SELECT * FROM "+Utilidades.TABLA_ESTRUCTURAS+" WHERE nombre=?", new String[]{nombreEstructura});
+        while (cursor.moveToNext()){
+            estructuraEntity = new EstructuraEntity();
+            estructuraEntity.setId(cursor.getInt(0));
+            estructuraEntity.setNombre(cursor.getString(1));
+            estructuraEntity.setId_proyecto(cursor.getInt(2));
+        }
+        return estructuraEntity;
     }
 }

@@ -1,0 +1,15 @@
+package co.com.luis.supervapp.enums;
+
+public enum ElementosEnum {
+    PILAS,
+    ZAPATAS,
+    MICROPILOTES,
+    VIGASDEFUNDACION,
+    LOSASDEFUNDACION,
+    MUROSDECONTENCION,
+    MUROSESTRUCTURALES,
+    COLUMNAS,
+    LOSAS,
+    MAMPOSTERIANOESTRUCTURAL,
+    MAMPOSTERIAESTRUCTURAL
+}

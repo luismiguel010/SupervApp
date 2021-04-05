@@ -1,12 +1,16 @@
 package co.com.luis.supervapp.domain.models;
 
+import co.com.luis.supervapp.enums.ElementosEnum;
+
 public class Elemento {
 
     String nombre;
+    ElementosEnum elementosEnum;
     Integer idEstructura;
 
-    public Elemento(String nombre, Integer idEstructura) {
+    public Elemento(String nombre, ElementosEnum elementosEnum, Integer idEstructura) {
         this.nombre = nombre;
+        this.elementosEnum = elementosEnum;
         this.idEstructura = idEstructura;
     }
 
@@ -24,5 +28,13 @@ public class Elemento {
 
     public void setIdEstructura(Integer idEstructura) {
         this.idEstructura = idEstructura;
+    }
+
+    public ElementosEnum getElementosEnum() {
+        return elementosEnum;
+    }
+
+    public void setElementosEnum(ElementosEnum elementosEnum) {
+        this.elementosEnum = elementosEnum;
     }
 }
