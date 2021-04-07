@@ -18,20 +18,20 @@ public class NombreElementoDialog {
 
     String nombreElemento;
 
-    public void showTextDialog(final Context context, final DBHelper dbHelper, final Integer idEstructura, final ElementosEnum elementosEnum){
+    public void showTextDialog(final Context context, final DBHelper dbHelper, final Integer idElemento){
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
         LinearLayout layout = new LinearLayout(context);
         layout.setOrientation(LinearLayout.VERTICAL);
         final EditText inputNombre = new EditText(context);
         inputNombre.setHint(context.getString(R.string.nombreelemento));
         layout.addView(inputNombre);
-        builder.setTitle("Ingrese el nombre del elemento "+context.getResources().getStringArray(R.array.string_array_elementos)[new ElementoBuilder().convertirEnumAInteger(elementosEnum)]);
+        builder.setTitle("Ingrese el nombre del elemento "+context.getResources().getStringArray(R.array.string_array_elementos)[idElemento]);
         builder.setView(layout);
         builder.setPositiveButton(context.getString(R.string.crear), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 nombreElemento = inputNombre.getText().toString();
-                Elemento elemento = new Elemento(nombreElemento, elementosEnum, idEstructura);
+                Elemento elemento = new Elemento(nombreElemento, idElemento);
                 ElementoQuery elementoQuery = new ElementoQuery();
                 elementoQuery.insertElemento(context, elemento, dbHelper);
             }

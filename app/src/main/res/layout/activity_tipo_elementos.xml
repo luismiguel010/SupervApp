@@ -5,11 +5,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.EstructurasActivity"
+    tools:context=".activities.TipoElementosActivity"
     tools:ignore="HardcodedText">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerview_estructuras"
+        android:id="@+id/recyclerview_tipo_elementos"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         tools:ignore="MissingConstraints" />
@@ -44,7 +44,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
-        android:text="Añadir Tipo de Elemento"
+        android:text="Añadir Estructura"
         app:layout_constraintBottom_toBottomOf="@+id/add_alarm_fab"
         app:layout_constraintEnd_toStartOf="@+id/add_alarm_fab"
         app:layout_constraintTop_toTopOf="@+id/add_alarm_fab" />

@@ -29,15 +29,6 @@
             android:text="nombre"
             android:textStyle="bold"
             tools:ignore="MissingConstraints" />
-
-        <TextView
-            android:id="@+id/tipo_elemento"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:text="Tipo de Elemento"
-            android:textStyle="bold"
-            tools:ignore="MissingConstraints" />
     </LinearLayout>
 
 </LinearLayout>

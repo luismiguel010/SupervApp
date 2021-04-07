@@ -23,8 +23,7 @@
     <string name="elemento_losas">Losas</string>
     <string name="elemento_mamposteria_no_estructural">Mampostería No Estructural</string>
     <string name="elemento_mamposteria_estructural">Mampostería Estructural</string>
-    <string-array
-        name="string_array_elementos">
+    <string-array name="string_array_elementos">
         <item>Pilas</item>
         <item>Zapatas</item>
         <item>Micropilotes</item>

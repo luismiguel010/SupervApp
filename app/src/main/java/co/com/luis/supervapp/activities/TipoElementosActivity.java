@@ -15,50 +15,48 @@ import java.util.ArrayList;
 
 import co.com.luis.supervapp.R;
 import co.com.luis.supervapp.adapters.AdapterElementos;
-import co.com.luis.supervapp.dialogs.NombreElementoDialog;
+import co.com.luis.supervapp.adapters.AdapterTipoElementos;
 import co.com.luis.supervapp.dialogs.TipoElementoDialog;
-import co.com.luis.supervapp.domain.models.Elemento;
-import co.com.luis.supervapp.enums.ElementosEnum;
+import co.com.luis.supervapp.domain.models.TipoDeElemento;
 import co.com.luis.supervapp.infraestructures.DBHelper;
 import co.com.luis.supervapp.infraestructures.entities.EstructuraEntity;
-import co.com.luis.supervapp.infraestructures.entities.TipoElementoEntity;
-import co.com.luis.supervapp.infraestructures.queries.ElementoQuery;
 import co.com.luis.supervapp.infraestructures.queries.EstructuraQuery;
 import co.com.luis.supervapp.infraestructures.queries.TipoElementoQuery;
 import co.com.luis.supervapp.utilidades.Utilidades;
 
-public class ElementosActivity extends AppCompatActivity {
+public class TipoElementosActivity extends AppCompatActivity {
 
     FloatingActionButton mAddFab, mAddAlarmFab;
     TextView addAlarmActionText;
     Boolean isAllFabsVisible;
-    ArrayList<Elemento> elementosList;
+    ArrayList<TipoDeElemento> tipoDeElementosList;
     RecyclerView recyclerView;
     DBHelper dbHelper;
     Context context;
-    TipoElementoEntity tipoElementoEntity;
+    EstructuraEntity estructuraEntity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_elementos);
-        setTitle(getIntent().getIntExtra("id_tipoelemento",0));
+        setContentView(R.layout.activity_tipo_elementos);
+        setTitle(getIntent().getStringExtra("nombre_estructura"));
         mAddFab = findViewById(R.id.add_fab);
         mAddAlarmFab = findViewById(R.id.add_alarm_fab);
         addAlarmActionText = findViewById(R.id.add_alarm_action_text);
         mAddAlarmFab.setVisibility(View.GONE);
         addAlarmActionText.setVisibility(View.GONE);
-        elementosList = new ArrayList<>();
+        tipoDeElementosList = new ArrayList<>();
         dbHelper = new DBHelper(getApplicationContext(), Utilidades.NOMBRE_BASEDEDATOS, null, Utilidades.VERSION_BASE_DE_DATOS);
         isAllFabsVisible = false;
-        recyclerView = (RecyclerView) findViewById(R.id.recyclerview_elementos);
+        recyclerView = (RecyclerView) findViewById(R.id.recyclerview_tipo_elementos);
         recyclerView.setLayoutManager(new GridLayoutManager(this, 4));
         context = getApplicationContext();
 
-        elementosList = obtenerTodosLosElementos();
+        estructuraEntity = obtenerEstructura(getIntent().getStringExtra("nombre_estructura"));
+        tipoDeElementosList = obtenerTipoElementosPorIdEstructura(estructuraEntity.getId());
 
-        AdapterElementos adapterElementos = new AdapterElementos(elementosList, context);
-        recyclerView.setAdapter(adapterElementos);
+        AdapterTipoElementos adapterTipoElementos = new AdapterTipoElementos(tipoDeElementosList, context);
+        recyclerView.setAdapter(adapterTipoElementos);
 
         mAddFab.setOnClickListener(
                 new View.OnClickListener() {
@@ -87,11 +85,14 @@ public class ElementosActivity extends AppCompatActivity {
 
     private void showProyectoDialog() {
         Context context = this;
-        new NombreElementoDialog().showTextDialog(context, dbHelper, getIntent().getIntExtra("id_tipoelemento",0));
+        new TipoElementoDialog().onCreateDialog(context, dbHelper, estructuraEntity.getId());
     }
 
-    private ArrayList<Elemento> obtenerTodosLosElementos() {
-        ElementoQuery elementoQuery = new ElementoQuery();
-        return elementoQuery.getAllElemento(dbHelper);
+    private EstructuraEntity obtenerEstructura(String nombreEstructura) {
+        return new EstructuraQuery().getEstructuraByNombre(dbHelper, nombreEstructura);
+    }
+
+    private ArrayList<TipoDeElemento> obtenerTipoElementosPorIdEstructura(Integer idEstructura){
+        return new TipoElementoQuery().obtenerTipoElementosPorIdEstructura(dbHelper, idEstructura);
     }
 }

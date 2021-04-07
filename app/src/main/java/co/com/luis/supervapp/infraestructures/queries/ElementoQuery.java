@@ -26,8 +26,7 @@ public class ElementoQuery {
             ContentValues contentValues = new ContentValues();
             contentValues.put(Utilidades.CAMPO_ID, UUID.randomUUID().toString());
             contentValues.put(Utilidades.CAMPO_NOMBRE, elementoEntity.getNombre());
-            contentValues.put(Utilidades.CAMPO_TIPO_ELEMENTO, elementoEntity.getElementosEnum());
-            contentValues.put(Utilidades.CAMPO_ID_ESTRUCTURA, elementoEntity.getIdEstructura());
+            contentValues.put(Utilidades.CAMPO_ID_ELEMENTO, elementoEntity.getIdElemento());
             Long idResultante = sqLiteDatabase.insert(Utilidades.TABLA_ELEMENTOS, Utilidades.CAMPO_ID,contentValues);
             Toast.makeText(context, "Id Registro: "+idResultante, Toast.LENGTH_SHORT).show();
             sqLiteDatabase.close();
@@ -43,8 +42,7 @@ public class ElementoQuery {
             elementoEntity = new ElementoEntity();
             elementoEntity.setId(cursor.getInt(0));
             elementoEntity.setNombre(cursor.getString(1));
-            elementoEntity.setElementosEnum(cursor.getInt(2));
-            elementoEntity.setIdEstructura(cursor.getInt(3));
+            elementoEntity.setIdElemento(cursor.getInt(2));
             ElementoBuilder elementoBuilder = new ElementoBuilder();
             Elemento elemento = elementoBuilder.convertirAModel(elementoEntity);
             elementos.add(elemento);

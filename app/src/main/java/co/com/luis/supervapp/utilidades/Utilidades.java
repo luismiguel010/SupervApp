@@ -6,7 +6,7 @@ public class Utilidades {
     //Constantes generales
     //----------------------------------------------------------
     public static final String NOMBRE_BASEDEDATOS = "db_supervapp";
-    public static final int VERSION_BASE_DE_DATOS = 2;
+    public static final int VERSION_BASE_DE_DATOS = 4;
     //----------------------------------------------------------
     //Constantes campos tabla proyecto
     //----------------------------------------------------------
@@ -22,9 +22,14 @@ public class Utilidades {
     //----------------------------------------------------------
     //Constantes campos tabla elementos
     //----------------------------------------------------------
-    public static final String TABLA_ELEMENTOS = "elemento";
+    public static final String TABLA_TIPO_ELEMENTOS = "tipoelemento";
     public static final String CAMPO_TIPO_ELEMENTO = "tipo_elemento";
     public static final String CAMPO_ID_ESTRUCTURA = "id_estructura";
+    //----------------------------------------------------------
+    //Constantes campos tabla elementos
+    //----------------------------------------------------------
+    public static final String TABLA_ELEMENTOS = "elemento";
+    public static final String CAMPO_ID_ELEMENTO = "id_elemento";
     //----------------------------------------------------------
     //Constantes creación de tablas
     //----------------------------------------------------------
@@ -36,9 +41,15 @@ public class Utilidades {
             ""+TABLA_ESTRUCTURAS+" ("+CAMPO_ID+" "+
             "INTEGER, "+CAMPO_NOMBRE+" TEXT,"+CAMPO_ID_PROYECTO+" INTEGER)";
 
+    public static final String CREAR_TABLA_TIPO_ELEMENTO="CREATE TABLE " +
+            ""+TABLA_TIPO_ELEMENTOS+" ("+CAMPO_TIPO_ELEMENTO+" "+
+            "INTEGER, "+CAMPO_ID_ESTRUCTURA+" INTEGER)";
+
     public static final String CREAR_TABLA_ELEMENTO="CREATE TABLE " +
             ""+TABLA_ELEMENTOS+" ("+CAMPO_ID+" "+
-            "INTEGER, "+CAMPO_NOMBRE+" TEXT, "+CAMPO_TIPO_ELEMENTO+" TEXT,"+CAMPO_ID_ESTRUCTURA+" INTEGER)";
+            "INTEGER, "+CAMPO_NOMBRE+" TEXT, "+ CAMPO_ID_ELEMENTO +" INTEGER)";
+
+
 
 
 }

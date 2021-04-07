@@ -18,6 +18,7 @@ public class DBHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         sqLiteDatabase.execSQL(Utilidades.CREAR_TABLA_PROYECTO);
         sqLiteDatabase.execSQL(Utilidades.CREAR_TABLA_ESTRUCTURA);
+        sqLiteDatabase.execSQL(Utilidades.CREAR_TABLA_TIPO_ELEMENTO);
         sqLiteDatabase.execSQL(Utilidades.CREAR_TABLA_ELEMENTO);
     }
 

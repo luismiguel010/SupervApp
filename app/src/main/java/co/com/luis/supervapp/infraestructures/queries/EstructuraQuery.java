@@ -54,7 +54,7 @@ public class EstructuraQuery {
     public EstructuraEntity getEstructuraByNombre(DBHelper dbHelper, String nombreEstructura){
         SQLiteDatabase sqLiteDatabase = dbHelper.getReadableDatabase();
         EstructuraEntity estructuraEntity = null;
-        Cursor cursor = sqLiteDatabase.rawQuery("SELECT * FROM "+Utilidades.TABLA_ESTRUCTURAS+" WHERE nombre=?", new String[]{nombreEstructura});
+        Cursor cursor = sqLiteDatabase.rawQuery("SELECT * FROM "+Utilidades.TABLA_ESTRUCTURAS+" WHERE "+Utilidades.CAMPO_NOMBRE+"=?", new String[]{nombreEstructura});
         while (cursor.moveToNext()){
             estructuraEntity = new EstructuraEntity();
             estructuraEntity.setId(cursor.getInt(0));

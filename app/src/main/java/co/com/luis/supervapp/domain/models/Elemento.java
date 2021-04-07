@@ -5,13 +5,11 @@ import co.com.luis.supervapp.enums.ElementosEnum;
 public class Elemento {
 
     String nombre;
-    ElementosEnum elementosEnum;
-    Integer idEstructura;
+    Integer idTipoElemento;
 
-    public Elemento(String nombre, ElementosEnum elementosEnum, Integer idEstructura) {
+    public Elemento(String nombre, Integer idTipoElemento) {
         this.nombre = nombre;
-        this.elementosEnum = elementosEnum;
-        this.idEstructura = idEstructura;
+        this.idTipoElemento = idTipoElemento;
     }
 
     public String getNombre() {
@@ -22,19 +20,12 @@ public class Elemento {
         this.nombre = nombre;
     }
 
-    public Integer getIdEstructura() {
-        return idEstructura;
+    public Integer getIdTipoElemento() {
+        return idTipoElemento;
     }
 
-    public void setIdEstructura(Integer idEstructura) {
-        this.idEstructura = idEstructura;
+    public void setIdTipoElemento(Integer idTipoElemento) {
+        this.idTipoElemento = idTipoElemento;
     }
 
-    public ElementosEnum getElementosEnum() {
-        return elementosEnum;
-    }
-
-    public void setElementosEnum(ElementosEnum elementosEnum) {
-        this.elementosEnum = elementosEnum;
-    }
 }

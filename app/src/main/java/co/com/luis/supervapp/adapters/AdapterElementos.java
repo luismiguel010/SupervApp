@@ -37,9 +37,6 @@ public class AdapterElementos extends RecyclerView.Adapter<AdapterElementos.View
     @Override
     public void onBindViewHolder(@NonNull AdapterElementos.ViewHolderElemento holder, int position) {
         holder.nombre.setText(elementosList.get(position).getNombre());
-        holder.tipoElemento.setText(context
-                .getResources()
-                .getStringArray(R.array.string_array_elementos)[new ElementoBuilder().convertirEnumAInteger(elementosList.get(position).getElementosEnum())]);
     }
 
     @Override
@@ -49,12 +46,11 @@ public class AdapterElementos extends RecyclerView.Adapter<AdapterElementos.View
 
     public class ViewHolderElemento extends RecyclerView.ViewHolder {
 
-        TextView nombre, tipoElemento;
+        TextView nombre;
 
         public ViewHolderElemento(@NonNull View itemView) {
             super(itemView);
             nombre = (TextView) itemView.findViewById(R.id.nombre);
-            tipoElemento = (TextView) itemView.findViewById(R.id.tipo_elemento);
             context = itemView.getContext();
         }
     }

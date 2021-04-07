@@ -16,6 +16,7 @@ import co.com.luis.supervapp.R;
 import co.com.luis.supervapp.activities.CheckBoxElementosActivity;
 import co.com.luis.supervapp.activities.ElementosActivity;
 import co.com.luis.supervapp.activities.EstructurasActivity;
+import co.com.luis.supervapp.activities.TipoElementosActivity;
 import co.com.luis.supervapp.domain.models.Estructura;
 
 public class AdapterEstructuras extends RecyclerView.Adapter<AdapterEstructuras.ViewHolderEstructura> {
@@ -42,7 +43,7 @@ public class AdapterEstructuras extends RecyclerView.Adapter<AdapterEstructuras.
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(context, ElementosActivity.class);
+                Intent intent = new Intent(context, TipoElementosActivity.class);
                 intent.putExtra("nombre_estructura", estructurasList.get(position).getNombre());
                 context.startActivity(intent);
             }

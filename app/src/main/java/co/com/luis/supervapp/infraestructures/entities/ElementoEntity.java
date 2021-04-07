@@ -2,23 +2,19 @@ package co.com.luis.supervapp.infraestructures.entities;
 
 import java.io.Serializable;
 
-import co.com.luis.supervapp.enums.ElementosEnum;
-
 public class ElementoEntity implements Serializable {
 
     private Integer id;
     private String nombre;
-    private Integer elementosEnum;
-    private Integer idEstructura;
+    private Integer idElemento;
 
     public ElementoEntity() {
     }
 
-    public ElementoEntity(Integer id, String nombre, Integer elementosEnum, Integer idEstructura) {
+    public ElementoEntity(Integer id, String nombre, Integer idElemento) {
         this.id = id;
         this.nombre = nombre;
-        this.elementosEnum = elementosEnum;
-        this.idEstructura = idEstructura;
+        this.idElemento = idElemento;
     }
 
     public Integer getId() {
@@ -37,20 +33,11 @@ public class ElementoEntity implements Serializable {
         this.nombre = nombre;
     }
 
-    public Integer getElementosEnum() {
-        return elementosEnum;
+    public Integer getIdElemento() {
+        return idElemento;
     }
 
-    public void setElementosEnum(Integer elementosEnum) {
-        this.elementosEnum = elementosEnum;
+    public void setIdElemento(Integer idElemento) {
+        this.idElemento = idElemento;
     }
-
-    public Integer getIdEstructura() {
-        return idEstructura;
-    }
-
-    public void setIdEstructura(Integer idEstructura) {
-        this.idEstructura = idEstructura;
-    }
-
 }
