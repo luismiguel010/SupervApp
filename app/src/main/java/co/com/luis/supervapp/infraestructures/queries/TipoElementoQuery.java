@@ -37,10 +37,10 @@ public class TipoElementoQuery {
         SQLiteDatabase sqLiteDatabase = dbHelper.getReadableDatabase();
         TipoElementoEntity tipoElementoEntity = null;
         ArrayList<TipoDeElemento> tipoDeElementos = new ArrayList<>();
-        Cursor cursor = sqLiteDatabase.rawQuery("SELECT * FROM "+Utilidades.TABLA_TIPO_ELEMENTOS+" WHERE "+Utilidades.CAMPO_ID_ESTRUCTURA+"=?", new String[]{idEstructura.toString()});
+        Cursor cursor = sqLiteDatabase.rawQuery("SELECT * FROM "+Utilidades.TABLA_TIPO_ELEMENTOS+" WHERE id_estructura=?", new String[]{String.valueOf(idEstructura)});
         while (cursor.moveToNext()){
+            tipoElementoEntity = new TipoElementoEntity();
             tipoElementoEntity.setTipoElemento(cursor.getInt(0));
-            //Falla acá, null pointer al setear ese valor
             tipoElementoEntity.setIdEstructura(cursor.getInt(1));
             TipoDeElemento tipoDeElemento = new TipoElementoBuilder().convertirAModelo(tipoElementoEntity);
             tipoDeElementos.add(tipoDeElemento);

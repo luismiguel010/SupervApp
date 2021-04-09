@@ -15,6 +15,7 @@ import java.util.ArrayList;
 
 import co.com.luis.supervapp.R;
 import co.com.luis.supervapp.adapters.AdapterElementos;
+import co.com.luis.supervapp.builders.TipoElementoBuilder;
 import co.com.luis.supervapp.dialogs.NombreElementoDialog;
 import co.com.luis.supervapp.dialogs.TipoElementoDialog;
 import co.com.luis.supervapp.domain.models.Elemento;
@@ -42,7 +43,8 @@ public class ElementosActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_elementos);
-        setTitle(getIntent().getIntExtra("id_tipoelemento",0));
+        setTitle(getResources()
+                .getStringArray(R.array.string_array_elementos)[getIntent().getIntExtra("id_tipoelemento",0)]);
         mAddFab = findViewById(R.id.add_fab);
         mAddAlarmFab = findViewById(R.id.add_alarm_fab);
         addAlarmActionText = findViewById(R.id.add_alarm_action_text);

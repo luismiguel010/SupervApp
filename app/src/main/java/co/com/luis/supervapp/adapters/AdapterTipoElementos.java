@@ -35,12 +35,19 @@ public class AdapterTipoElementos extends RecyclerView.Adapter<AdapterTipoElemen
         return new AdapterTipoElementos.ViewHolderTipoElementos(view);
     }
 
-    @Override
-    public void onBindViewHolder(@NonNull AdapterTipoElementos.ViewHolderTipoElementos holder, int position) {
+
+    public void onBindViewHolder(@NonNull AdapterTipoElementos.ViewHolderTipoElementos holder, final int position) {
         holder.tipoElemento.setText(context.getResources()
         .getStringArray(R.array.string_array_elementos)[new TipoElementoBuilder().convertirEnumAInteger(tipoDeElementos.get(position).getElementosEnum())]);
-        Intent intent = new Intent(context, ElementosActivity.class);
-        intent.putExtra("id_tipoelemento", new TipoElementoBuilder().convertirEnumAInteger(tipoDeElementos.get(position).getElementosEnum()));
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(context, ElementosActivity.class);
+                intent.putExtra("id_tipoelemento", new TipoElementoBuilder().convertirEnumAInteger(tipoDeElementos.get(position).getElementosEnum()));
+                context.startActivity(intent);
+            }
+        });
+
     }
 
     @Override
