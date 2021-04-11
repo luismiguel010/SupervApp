@@ -94,6 +94,6 @@ public class ElementosActivity extends AppCompatActivity {
 
     private ArrayList<Elemento> obtenerTodosLosElementos() {
         ElementoQuery elementoQuery = new ElementoQuery();
-        return elementoQuery.getAllElemento(dbHelper);
+        return elementoQuery.getAllElemento(dbHelper, getIntent().getIntExtra("id_tipoelemento",0));
     }
 }

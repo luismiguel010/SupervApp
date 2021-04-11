@@ -53,9 +53,9 @@ public class EstructurasActivity extends AppCompatActivity {
         recyclerView = (RecyclerView) findViewById(R.id.recyclerview_estructuras);
         recyclerView.setLayoutManager(new GridLayoutManager(this, 4));
         context = getApplicationContext();
-        
-        estructurasList = obtenerTodasLasEstructuras();
+
         proyectoEntity = obtenerProyecto(getIntent().getStringExtra("nombre_proyecto"));
+        estructurasList = obtenerTodasLasEstructuras();
 
         AdapterEstructuras adapterEstructuras = new AdapterEstructuras(estructurasList, context);
         recyclerView.setAdapter(adapterEstructuras);
@@ -98,6 +98,6 @@ public class EstructurasActivity extends AppCompatActivity {
 
     private ArrayList<Estructura> obtenerTodasLasEstructuras() {
         EstructuraQuery estructuraQuery = new EstructuraQuery();
-        return estructuraQuery.getAllEstructura(dbHelper);
+        return estructuraQuery.getAllEstructura(dbHelper, proyectoEntity.getId());
     }
 }

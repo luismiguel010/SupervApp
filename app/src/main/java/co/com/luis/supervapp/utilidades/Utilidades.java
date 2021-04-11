@@ -6,7 +6,7 @@ public class Utilidades {
     //Constantes generales
     //----------------------------------------------------------
     public static final String NOMBRE_BASEDEDATOS = "db_supervapp";
-    public static final int VERSION_BASE_DE_DATOS = 4;
+    public static final int VERSION_BASE_DE_DATOS = 6;
     //----------------------------------------------------------
     //Constantes campos tabla proyecto
     //----------------------------------------------------------
@@ -20,7 +20,7 @@ public class Utilidades {
     public static final String TABLA_ESTRUCTURAS = "estructura";
     public static final String CAMPO_ID_PROYECTO = "id_proyecto";
     //----------------------------------------------------------
-    //Constantes campos tabla elementos
+    //Constantes campos tabla tipo de elementos
     //----------------------------------------------------------
     public static final String TABLA_TIPO_ELEMENTOS = "tipoelemento";
     public static final String CAMPO_TIPO_ELEMENTO = "tipo_elemento";
@@ -29,7 +29,6 @@ public class Utilidades {
     //Constantes campos tabla elementos
     //----------------------------------------------------------
     public static final String TABLA_ELEMENTOS = "elemento";
-    public static final String CAMPO_ID_ELEMENTO = "id_elemento";
     //----------------------------------------------------------
     //Constantes creación de tablas
     //----------------------------------------------------------
@@ -47,7 +46,7 @@ public class Utilidades {
 
     public static final String CREAR_TABLA_ELEMENTO="CREATE TABLE " +
             ""+TABLA_ELEMENTOS+" ("+CAMPO_ID+" "+
-            "INTEGER, "+CAMPO_NOMBRE+" TEXT, "+ CAMPO_ID_ELEMENTO +" INTEGER)";
+            "INTEGER, "+CAMPO_NOMBRE+" TEXT, "+ CAMPO_TIPO_ELEMENTO +" INTEGER)";
 
 
 

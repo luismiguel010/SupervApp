@@ -26,18 +26,19 @@ public class ElementoQuery {
             ContentValues contentValues = new ContentValues();
             contentValues.put(Utilidades.CAMPO_ID, UUID.randomUUID().toString());
             contentValues.put(Utilidades.CAMPO_NOMBRE, elementoEntity.getNombre());
-            contentValues.put(Utilidades.CAMPO_ID_ELEMENTO, elementoEntity.getIdElemento());
+            contentValues.put(Utilidades.CAMPO_TIPO_ELEMENTO, elementoEntity.getIdElemento());
             Long idResultante = sqLiteDatabase.insert(Utilidades.TABLA_ELEMENTOS, Utilidades.CAMPO_ID,contentValues);
             Toast.makeText(context, "Id Registro: "+idResultante, Toast.LENGTH_SHORT).show();
             sqLiteDatabase.close();
         }
     }
 
-    public ArrayList<Elemento> getAllElemento(DBHelper dbHelper){
+    public ArrayList<Elemento> getAllElemento(DBHelper dbHelper, Integer idTipoElemento){
         SQLiteDatabase sqLiteDatabase = dbHelper.getReadableDatabase();
         ElementoEntity elementoEntity = null;
         ArrayList<Elemento> elementos = new ArrayList<>();
-        Cursor cursor = sqLiteDatabase.rawQuery("SELECT * FROM "+Utilidades.TABLA_ELEMENTOS, null);
+        Cursor cursor = sqLiteDatabase.rawQuery("SELECT * FROM "+Utilidades.TABLA_ELEMENTOS+
+                " WHERE "+Utilidades.CAMPO_TIPO_ELEMENTO+"=?", new String[]{String.valueOf(idTipoElemento)});
         while (cursor.moveToNext()){
             elementoEntity = new ElementoEntity();
             elementoEntity.setId(cursor.getInt(0));

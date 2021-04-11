@@ -34,11 +34,12 @@ public class EstructuraQuery {
         }
     }
 
-    public ArrayList<Estructura> getAllEstructura(DBHelper dbHelper){
+    public ArrayList<Estructura> getAllEstructura(DBHelper dbHelper, Integer idProyecto){
         SQLiteDatabase sqLiteDatabase = dbHelper.getReadableDatabase();
         EstructuraEntity estructuraEntity = null;
         ArrayList<Estructura> estructuras = new ArrayList<>();
-        Cursor cursor = sqLiteDatabase.rawQuery("SELECT * FROM "+Utilidades.TABLA_ESTRUCTURAS, null);
+        Cursor cursor = sqLiteDatabase.rawQuery("SELECT * FROM "+Utilidades.TABLA_ESTRUCTURAS+
+                " WHERE "+Utilidades.CAMPO_ID_PROYECTO+"=?" , new String[]{String.valueOf(idProyecto)});
         while (cursor.moveToNext()){
             estructuraEntity = new EstructuraEntity();
             estructuraEntity.setId(cursor.getInt(0));
