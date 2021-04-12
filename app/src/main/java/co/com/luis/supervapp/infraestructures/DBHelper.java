@@ -20,13 +20,16 @@ public class DBHelper extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL(Utilidades.CREAR_TABLA_ESTRUCTURA);
         sqLiteDatabase.execSQL(Utilidades.CREAR_TABLA_TIPO_ELEMENTO);
         sqLiteDatabase.execSQL(Utilidades.CREAR_TABLA_ELEMENTO);
+        sqLiteDatabase.execSQL(Utilidades.CREAR_TABLA_PILA_CHECKING);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int oldVersion, int newVersion) {
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS "+Utilidades.TABLA_PROYECTOS);
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS "+Utilidades.TABLA_ESTRUCTURAS);
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS "+Utilidades.TABLA_TIPO_ELEMENTOS);
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS "+Utilidades.TABLA_ELEMENTOS);
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS "+Utilidades.TABLA_PILA_CHECKING);
         onCreate(sqLiteDatabase);
     }
 }

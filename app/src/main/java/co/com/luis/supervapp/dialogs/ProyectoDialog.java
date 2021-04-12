@@ -16,6 +16,8 @@ import co.com.luis.supervapp.domain.models.Proyecto;
 import co.com.luis.supervapp.infraestructures.DBHelper;
 import co.com.luis.supervapp.infraestructures.queries.ProyectoQuery;
 
+import java.util.UUID;
+
 public class ProyectoDialog {
 
     Proyecto proyecto;
@@ -41,7 +43,7 @@ public class ProyectoDialog {
             public void onClick(DialogInterface dialog, int which) {
                 nombreProyecto = inputNombre.getText().toString();
                 constructora = inputConstructora.getText().toString();
-                proyecto = new Proyecto(nombreProyecto, constructora);
+                proyecto = new Proyecto(UUID.randomUUID(), nombreProyecto, constructora);
                 ProyectoQuery proyectoQuery = new ProyectoQuery();
                 proyectoQuery.insertProyecto(context, proyecto, dbHelper);
             }

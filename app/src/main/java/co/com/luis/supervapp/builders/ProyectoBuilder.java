@@ -8,6 +8,7 @@ public class ProyectoBuilder {
     public ProyectoEntity convertirAEntity(Proyecto proyecto){
         ProyectoEntity proyectoEntity = new ProyectoEntity();
         if(proyecto != null){
+            proyectoEntity.setId(proyecto.getIdProyecto());
             proyectoEntity.setNombre(proyecto.getNombre());
             proyectoEntity.setConstructura(proyecto.getConstructura());
         }
@@ -15,6 +16,6 @@ public class ProyectoBuilder {
     }
 
     public Proyecto convertirAModel(ProyectoEntity proyectoEntity){
-        return new Proyecto(proyectoEntity.getNombre(), proyectoEntity.getConstructura());
+        return new Proyecto(proyectoEntity.getId(), proyectoEntity.getNombre(), proyectoEntity.getConstructura());
     }
 }

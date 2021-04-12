@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+import co.com.luis.supervapp.dialogs.checkings.PilaCheckDialog;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
@@ -59,7 +60,7 @@ public class ElementosActivity extends AppCompatActivity {
 
         elementosList = obtenerTodosLosElementos();
 
-        AdapterElementos adapterElementos = new AdapterElementos(elementosList, context);
+        AdapterElementos adapterElementos = new AdapterElementos(elementosList, context, dbHelper);
         recyclerView.setAdapter(adapterElementos);
 
         mAddFab.setOnClickListener(

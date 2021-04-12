@@ -9,6 +9,7 @@ public class ElementoBuilder {
     public ElementoEntity convertirAEntity(Elemento elemento){
         ElementoEntity elementoEntity = new ElementoEntity();
         if(elemento != null){
+            elementoEntity.setId(elemento.getIdElemento());
             elementoEntity.setNombre(elemento.getNombre());
             elementoEntity.setIdElemento(elemento.getIdTipoElemento());
         }
@@ -16,6 +17,6 @@ public class ElementoBuilder {
     }
 
     public Elemento convertirAModel(ElementoEntity elementoEntity){
-        return new Elemento(elementoEntity.getNombre(), elementoEntity.getIdElemento());
+        return new Elemento(elementoEntity.getId(), elementoEntity.getNombre(), elementoEntity.getIdElemento());
     }
 }

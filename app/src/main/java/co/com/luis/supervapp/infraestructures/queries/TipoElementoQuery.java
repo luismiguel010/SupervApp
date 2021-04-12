@@ -25,7 +25,7 @@ public class TipoElementoQuery {
         if(sqLiteDatabase != null){
             ContentValues contentValues = new ContentValues();
             contentValues.put(Utilidades.CAMPO_TIPO_ELEMENTO, tipoElementoEntity.getTipoElemento());
-            contentValues.put(Utilidades.CAMPO_ID_ESTRUCTURA, tipoElementoEntity.getIdEstructura());
+            contentValues.put(Utilidades.CAMPO_ID_ESTRUCTURA, tipoElementoEntity.getIdEstructura().toString());
             Long idResultante = sqLiteDatabase.insert(Utilidades.TABLA_TIPO_ELEMENTOS, Utilidades.CAMPO_TIPO_ELEMENTO,contentValues);
             Toast.makeText(context, "Id Registro: "+idResultante, Toast.LENGTH_SHORT).show();
             sqLiteDatabase.close();
@@ -33,7 +33,7 @@ public class TipoElementoQuery {
     }
 
 
-    public ArrayList<TipoDeElemento> obtenerTipoElementosPorIdEstructura(DBHelper dbHelper, Integer idEstructura){
+    public ArrayList<TipoDeElemento> obtenerTipoElementosPorIdEstructura(DBHelper dbHelper, UUID idEstructura){
         SQLiteDatabase sqLiteDatabase = dbHelper.getReadableDatabase();
         TipoElementoEntity tipoElementoEntity = null;
         ArrayList<TipoDeElemento> tipoDeElementos = new ArrayList<>();
@@ -41,7 +41,7 @@ public class TipoElementoQuery {
         while (cursor.moveToNext()){
             tipoElementoEntity = new TipoElementoEntity();
             tipoElementoEntity.setTipoElemento(cursor.getInt(0));
-            tipoElementoEntity.setIdEstructura(cursor.getInt(1));
+            tipoElementoEntity.setIdEstructura(UUID.fromString(cursor.getString(1)));
             TipoDeElemento tipoDeElemento = new TipoElementoBuilder().convertirAModelo(tipoElementoEntity);
             tipoDeElementos.add(tipoDeElemento);
         }

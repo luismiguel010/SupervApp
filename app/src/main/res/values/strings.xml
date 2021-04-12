@@ -10,6 +10,7 @@
     <string name="nombreconstructora">Nombre de la constructora</string>
     <string name="nombreelemento">Nombre del elemento</string>
     <string name="tipoElemento">Seleccione el tipo de elemento</string>
+    <string name="seleccionelasopcionesquecumple">Seleccione las características que cumple</string>
     <string name="ingresetodoslosdatos">Ingrese todos los datos por favor.</string>
     <string name="nombreestructura">Nombre de la estructura</string>
     <string name="elemento_pilas">Pilas</string>
@@ -23,6 +24,7 @@
     <string name="elemento_losas">Losas</string>
     <string name="elemento_mamposteria_no_estructural">Mampostería No Estructural</string>
     <string name="elemento_mamposteria_estructural">Mampostería Estructural</string>
+    <string name="ok">Ok</string>
     <string-array name="string_array_elementos">
         <item>Pilas</item>
         <item>Zapatas</item>
@@ -35,5 +37,13 @@
         <item>Losas</item>
         <item>Mampostería No Estructural</item>
         <item>Mampostería Estructural</item>
+    </string-array>
+    <string-array name="string_array_pilacheck">
+        <item>Diámetro</item>
+        <item>Profundidad</item>
+        <item>Altura de la campana</item>
+        <item>Altura de la pila</item>
+        <item>Material</item>
+        <item>Acero de refuerzo</item>
     </string-array>
 </resources>

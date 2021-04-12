@@ -11,12 +11,14 @@ import co.com.luis.supervapp.enums.ElementosEnum;
 import co.com.luis.supervapp.infraestructures.DBHelper;
 import co.com.luis.supervapp.infraestructures.queries.TipoElementoQuery;
 
+import java.util.UUID;
+
 public class TipoElementoDialog {
 
     ElementosEnum elementoEnum;
     TipoDeElemento tipoDeElemento;
 
-    public void onCreateDialog(final Context context, final DBHelper dbHelper, final Integer idEstructura) {
+    public void onCreateDialog(final Context context, final DBHelper dbHelper, final UUID idEstructura) {
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
         builder.setTitle(context.getString(R.string.tipoElemento));
         builder.setItems(context.getResources().getStringArray(R.array.string_array_elementos), new DialogInterface.OnClickListener() {

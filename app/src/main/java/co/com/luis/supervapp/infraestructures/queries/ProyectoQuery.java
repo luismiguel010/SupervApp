@@ -26,7 +26,7 @@ public class ProyectoQuery {
         SQLiteDatabase sqLiteDatabase = dbHelper.getWritableDatabase();
         if(sqLiteDatabase != null){
             ContentValues contentValues = new ContentValues();
-            contentValues.put(Utilidades.CAMPO_ID, UUID.randomUUID().toString());
+            contentValues.put(Utilidades.CAMPO_ID, proyecto.getIdProyecto().toString());
             contentValues.put(Utilidades.CAMPO_NOMBRE, proyectoEntity.getNombre());
             contentValues.put(Utilidades.CAMPO_CONSTRUCTORA, proyectoEntity.getConstructura());
             Long idResultante = sqLiteDatabase.insert(Utilidades.TABLA_PROYECTOS, Utilidades.CAMPO_ID,contentValues);
@@ -42,7 +42,7 @@ public class ProyectoQuery {
         Cursor cursor = sqLiteDatabase.rawQuery("SELECT * FROM "+Utilidades.TABLA_PROYECTOS, null);
         while (cursor.moveToNext()){
             proyectoEntity = new ProyectoEntity();
-            proyectoEntity.setId(cursor.getInt(0));
+            proyectoEntity.setId(UUID.fromString(cursor.getString(0)));
             proyectoEntity.setNombre(cursor.getString(1));
             proyectoEntity.setConstructura(cursor.getString(2));
             ProyectoBuilder proyectoBuilder = new ProyectoBuilder();
@@ -58,7 +58,7 @@ public class ProyectoQuery {
         Cursor cursor = sqLiteDatabase.rawQuery("SELECT * FROM "+Utilidades.TABLA_PROYECTOS+" WHERE nombre=?", new String[]{nombreProyecto});
         while (cursor.moveToNext()){
             proyectoEntity = new ProyectoEntity();
-            proyectoEntity.setId(cursor.getInt(0));
+            proyectoEntity.setId(UUID.fromString(cursor.getString(0)));
             proyectoEntity.setNombre(cursor.getString(1));
             proyectoEntity.setConstructura(cursor.getString(2));
         }

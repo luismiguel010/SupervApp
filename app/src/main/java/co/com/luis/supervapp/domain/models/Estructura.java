@@ -1,28 +1,17 @@
 package co.com.luis.supervapp.domain.models;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
+
+import java.util.UUID;
+
+@Getter
+@AllArgsConstructor
 public class Estructura {
 
+    UUID idEstructura;
     String nombre;
-    Integer idProyecto;
+    UUID idProyecto;
 
-    public Estructura(String nombre, Integer idProyecto) {
-        this.nombre = nombre;
-        this.idProyecto = idProyecto;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public Integer getIdProyecto() {
-        return idProyecto;
-    }
-
-    public void setIdProyecto(Integer idProyecto) {
-        this.idProyecto = idProyecto;
-    }
 }

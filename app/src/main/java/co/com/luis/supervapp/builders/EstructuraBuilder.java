@@ -8,6 +8,7 @@ public class EstructuraBuilder {
     public EstructuraEntity convertirAEntity(Estructura estructura){
         EstructuraEntity estructuraEntity = new EstructuraEntity();
         if(estructura != null){
+            estructuraEntity.setId(estructura.getIdEstructura());
             estructuraEntity.setNombre(estructura.getNombre());
             estructuraEntity.setId_proyecto(estructura.getIdProyecto());
         }
@@ -15,6 +16,6 @@ public class EstructuraBuilder {
     }
 
     public Estructura convertirAModel(EstructuraEntity estructuraEntity){
-        return new Estructura(estructuraEntity.getNombre(), estructuraEntity.getId_proyecto());
+        return new Estructura(estructuraEntity.getId(), estructuraEntity.getNombre(), estructuraEntity.getId_proyecto());
     }
 }

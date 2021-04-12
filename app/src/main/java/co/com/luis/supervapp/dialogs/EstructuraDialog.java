@@ -16,6 +16,8 @@ import co.com.luis.supervapp.infraestructures.DBHelper;
 import co.com.luis.supervapp.infraestructures.queries.EstructuraQuery;
 import co.com.luis.supervapp.infraestructures.queries.ProyectoQuery;
 
+import java.util.UUID;
+
 public class EstructuraDialog {
 
     Estructura estructura;
@@ -23,7 +25,7 @@ public class EstructuraDialog {
     RecyclerView recyclerView;
     AdapterProyectos adapterProyectos;
 
-    public void showTextDialog(final Context context, final DBHelper dbHelper, final Integer idProyecto){
+    public void showTextDialog(final Context context, final DBHelper dbHelper, final UUID idProyecto){
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
         LinearLayout layout = new LinearLayout(context);
         layout.setOrientation(LinearLayout.VERTICAL);
@@ -36,7 +38,7 @@ public class EstructuraDialog {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 nombreEstructura = inputNombre.getText().toString();
-                estructura = new Estructura(nombreEstructura, idProyecto);
+                estructura = new Estructura(UUID.randomUUID(), nombreEstructura, idProyecto);
                 EstructuraQuery estructuraQuery = new EstructuraQuery();
                 estructuraQuery.insertEstructura(context, estructura, dbHelper);
             }

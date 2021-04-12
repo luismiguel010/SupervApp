@@ -10,9 +10,13 @@ import androidx.appcompat.app.AlertDialog;
 import co.com.luis.supervapp.R;
 import co.com.luis.supervapp.builders.ElementoBuilder;
 import co.com.luis.supervapp.domain.models.Elemento;
+import co.com.luis.supervapp.domain.models.cheks.PilaCheck;
 import co.com.luis.supervapp.enums.ElementosEnum;
 import co.com.luis.supervapp.infraestructures.DBHelper;
 import co.com.luis.supervapp.infraestructures.queries.ElementoQuery;
+import co.com.luis.supervapp.infraestructures.queries.checks.PilaCheckQuery;
+
+import java.util.UUID;
 
 public class NombreElementoDialog {
 
@@ -31,7 +35,7 @@ public class NombreElementoDialog {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 nombreElemento = inputNombre.getText().toString();
-                Elemento elemento = new Elemento(nombreElemento, idElemento);
+                Elemento elemento = new Elemento(UUID.randomUUID(), nombreElemento, idElemento);
                 ElementoQuery elementoQuery = new ElementoQuery();
                 elementoQuery.insertElemento(context, elemento, dbHelper);
             }

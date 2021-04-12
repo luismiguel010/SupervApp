@@ -1,19 +1,18 @@
-package co.com.luis.supervapp.infraestructures.entities;
+package co.com.luis.supervapp.infraestructures.entities.checks;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.io.Serializable;
+import java.util.List;
 import java.util.UUID;
 
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class TipoElementoEntity implements Serializable {
-
-    Integer tipoElemento;
-    UUID idEstructura;
+public class PilaCheckEntity {
+    UUID idElemento;
+    List<Integer> checks;
 }

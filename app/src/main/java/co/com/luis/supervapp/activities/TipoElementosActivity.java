@@ -12,6 +12,7 @@ import android.widget.TextView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
+import java.util.UUID;
 
 import co.com.luis.supervapp.R;
 import co.com.luis.supervapp.adapters.AdapterElementos;
@@ -92,7 +93,7 @@ public class TipoElementosActivity extends AppCompatActivity {
         return new EstructuraQuery().getEstructuraByNombre(dbHelper, nombreEstructura);
     }
 
-    private ArrayList<TipoDeElemento> obtenerTipoElementosPorIdEstructura(Integer idEstructura){
+    private ArrayList<TipoDeElemento> obtenerTipoElementosPorIdEstructura(UUID idEstructura){
         return new TipoElementoQuery().obtenerTipoElementosPorIdEstructura(dbHelper, idEstructura);
     }
 }

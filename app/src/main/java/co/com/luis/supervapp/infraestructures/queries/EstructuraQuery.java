@@ -25,16 +25,16 @@ public class EstructuraQuery {
         SQLiteDatabase sqLiteDatabase = dbHelper.getWritableDatabase();
         if(sqLiteDatabase != null){
             ContentValues contentValues = new ContentValues();
-            contentValues.put(Utilidades.CAMPO_ID, UUID.randomUUID().toString());
+            contentValues.put(Utilidades.CAMPO_ID, estructura.getIdEstructura().toString());
             contentValues.put(Utilidades.CAMPO_NOMBRE, estructuraEntity.getNombre());
-            contentValues.put(Utilidades.CAMPO_ID_PROYECTO, estructuraEntity.getId_proyecto());
+            contentValues.put(Utilidades.CAMPO_ID_PROYECTO, estructuraEntity.getId_proyecto().toString());
             Long idResultante = sqLiteDatabase.insert(Utilidades.TABLA_ESTRUCTURAS, Utilidades.CAMPO_ID,contentValues);
             Toast.makeText(context, "Id Registro: "+idResultante, Toast.LENGTH_SHORT).show();
             sqLiteDatabase.close();
         }
     }
 
-    public ArrayList<Estructura> getAllEstructura(DBHelper dbHelper, Integer idProyecto){
+    public ArrayList<Estructura> getAllEstructura(DBHelper dbHelper, UUID idProyecto){
         SQLiteDatabase sqLiteDatabase = dbHelper.getReadableDatabase();
         EstructuraEntity estructuraEntity = null;
         ArrayList<Estructura> estructuras = new ArrayList<>();
@@ -42,9 +42,9 @@ public class EstructuraQuery {
                 " WHERE "+Utilidades.CAMPO_ID_PROYECTO+"=?" , new String[]{String.valueOf(idProyecto)});
         while (cursor.moveToNext()){
             estructuraEntity = new EstructuraEntity();
-            estructuraEntity.setId(cursor.getInt(0));
+            estructuraEntity.setId(UUID.fromString(cursor.getString(0)));
             estructuraEntity.setNombre(cursor.getString(1));
-            estructuraEntity.setId_proyecto(cursor.getInt(2));
+            estructuraEntity.setId_proyecto(UUID.fromString(cursor.getString(2)));
             EstructuraBuilder estructuraBuilder = new EstructuraBuilder();
             Estructura estructura = estructuraBuilder.convertirAModel(estructuraEntity);
             estructuras.add(estructura);
@@ -58,9 +58,9 @@ public class EstructuraQuery {
         Cursor cursor = sqLiteDatabase.rawQuery("SELECT * FROM "+Utilidades.TABLA_ESTRUCTURAS+" WHERE "+Utilidades.CAMPO_NOMBRE+"=?", new String[]{nombreEstructura});
         while (cursor.moveToNext()){
             estructuraEntity = new EstructuraEntity();
-            estructuraEntity.setId(cursor.getInt(0));
+            estructuraEntity.setId(UUID.fromString(cursor.getString(0)));
             estructuraEntity.setNombre(cursor.getString(1));
-            estructuraEntity.setId_proyecto(cursor.getInt(2));
+            estructuraEntity.setId_proyecto(UUID.fromString(cursor.getString(2)));
         }
         return estructuraEntity;
     }
