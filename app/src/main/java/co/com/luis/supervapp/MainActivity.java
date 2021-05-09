@@ -30,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
     RecyclerView recyclerView;
     DBHelper dbHelper;
     Context context;
+    Intent intent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -90,4 +91,16 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    public void refreshList(Context context) {
+        ProyectoQuery proyectoQuery = new ProyectoQuery();
+        dbHelper = new DBHelper(context, Utilidades.NOMBRE_BASEDEDATOS, null, Utilidades.VERSION_BASE_DE_DATOS);
+        proyectolist = proyectoQuery.getAllProyectos(dbHelper);
+        AdapterProyectos adapterProyectos = new AdapterProyectos(proyectolist, context);
+        context = adapterProyectos.update();
+        intent = new Intent(context, MainActivity.class);
+        finish();
+        overridePendingTransition(0, 0);
+        context.startActivity(intent);
+        overridePendingTransition(0, 0);
+    }
 }

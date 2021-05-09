@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
+import co.com.luis.supervapp.MainActivity;
 import co.com.luis.supervapp.builders.ProyectoBuilder;
 import co.com.luis.supervapp.domain.models.Proyecto;
 import co.com.luis.supervapp.infraestructures.DBHelper;
@@ -32,6 +33,8 @@ public class ProyectoQuery {
             Long idResultante = sqLiteDatabase.insert(Utilidades.TABLA_PROYECTOS, Utilidades.CAMPO_ID,contentValues);
             Toast.makeText(context, "Id Registro: "+idResultante, Toast.LENGTH_SHORT).show();
             sqLiteDatabase.close();
+            MainActivity mainActivity = new MainActivity();
+            mainActivity.refreshList(context);
         }
     }
 
@@ -52,8 +55,9 @@ public class ProyectoQuery {
         return proyectos;
     }
 
-    public ProyectoEntity getProyectoByNombre(DBHelper dbHelper, String nombreProyecto){
-        SQLiteDatabase sqLiteDatabase = dbHelper.getReadableDatabase();
+    public ProyectoEntity getProyectoByNombre(DBHelper dbHelper, String nombreProyecto, Context context){
+        dbHelper = new DBHelper(context, Utilidades.NOMBRE_BASEDEDATOS, null, Utilidades.VERSION_BASE_DE_DATOS);
+        SQLiteDatabase sqLiteDatabase = dbHelper.getWritableDatabase();
         ProyectoEntity proyectoEntity = null;
         Cursor cursor = sqLiteDatabase.rawQuery("SELECT * FROM "+Utilidades.TABLA_PROYECTOS+" WHERE nombre=?", new String[]{nombreProyecto});
         while (cursor.moveToNext()){

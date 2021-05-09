@@ -56,6 +56,14 @@ public class AdapterEstructuras extends RecyclerView.Adapter<AdapterEstructuras.
         return estructurasList.size();
     }
 
+    public Context update() {
+        ArrayList<Estructura> estructurasNew = new ArrayList<>(this.estructurasList);
+        estructurasList.clear();
+        estructurasList.addAll(estructurasNew);
+        notifyDataSetChanged();
+        return context;
+    }
+
     public class ViewHolderEstructura extends RecyclerView.ViewHolder {
 
         TextView nombre;

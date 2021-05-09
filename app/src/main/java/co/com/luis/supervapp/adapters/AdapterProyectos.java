@@ -27,6 +27,14 @@ public class AdapterProyectos extends RecyclerView.Adapter<AdapterProyectos.View
         this.context = context;
     }
 
+    public ArrayList<Proyecto> getProyectolist() {
+        return proyectolist;
+    }
+
+    public Context getContext() {
+        return context;
+    }
+
     @NonNull
     @Override
     public ViewHolderProyecto onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -64,5 +72,13 @@ public class AdapterProyectos extends RecyclerView.Adapter<AdapterProyectos.View
             constructora = (TextView) itemView.findViewById(R.id.contructora);
             context = itemView.getContext();
         }
+    }
+
+    public Context update(){
+        ArrayList<Proyecto> proyectosListNew = new ArrayList<>(this.proyectolist);
+        proyectolist.clear();
+        proyectolist.addAll(proyectosListNew);
+        notifyDataSetChanged();
+        return context;
     }
 }

@@ -1,5 +1,6 @@
 package co.com.luis.supervapp.activities;
 
+import android.content.Intent;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -9,6 +10,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+import co.com.luis.supervapp.MainActivity;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
@@ -36,6 +38,7 @@ public class EstructurasActivity extends AppCompatActivity {
     DBHelper dbHelper;
     Context context;
     ProyectoEntity proyectoEntity;
+    Intent intent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,7 +57,7 @@ public class EstructurasActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new GridLayoutManager(this, 4));
         context = getApplicationContext();
 
-        proyectoEntity = obtenerProyecto(getIntent().getStringExtra("nombre_proyecto"));
+        proyectoEntity = obtenerProyecto(getIntent().getStringExtra("nombre_proyecto"), dbHelper, context);
         estructurasList = obtenerTodasLasEstructuras();
 
         AdapterEstructuras adapterEstructuras = new AdapterEstructuras(estructurasList, context);
@@ -85,9 +88,9 @@ public class EstructurasActivity extends AppCompatActivity {
                 });
     }
 
-    private ProyectoEntity obtenerProyecto(String nombre_proyecto) {
+        private ProyectoEntity obtenerProyecto(String nombre_proyecto, DBHelper dbHelper, Context context) {
         ProyectoQuery proyectoQuery = new ProyectoQuery();
-        return proyectoQuery.getProyectoByNombre(dbHelper, nombre_proyecto);
+        return proyectoQuery.getProyectoByNombre(dbHelper, nombre_proyecto, context);
     }
 
     private void showProyectoDialog() {
@@ -99,5 +102,19 @@ public class EstructurasActivity extends AppCompatActivity {
     private ArrayList<Estructura> obtenerTodasLasEstructuras() {
         EstructuraQuery estructuraQuery = new EstructuraQuery();
         return estructuraQuery.getAllEstructura(dbHelper, proyectoEntity.getId());
+    }
+
+    public void refreshList(Context context) {
+        EstructuraQuery estructuraQuery = new EstructuraQuery();
+        dbHelper = new DBHelper(context, Utilidades.NOMBRE_BASEDEDATOS, null, Utilidades.VERSION_BASE_DE_DATOS);
+        Intent intent = new Intent(context, EstructurasActivity.class);
+        proyectoEntity = obtenerProyecto(intent.getStringExtra("nombre_proyecto"), dbHelper, context);
+        estructurasList = estructuraQuery.getAllEstructura(dbHelper, proyectoEntity.getId());
+        AdapterEstructuras adapterEstructuras = new AdapterEstructuras(estructurasList, context);
+        context = adapterEstructuras.update();
+        finish();
+        overridePendingTransition(0, 0);
+        context.startActivity(intent);
+        overridePendingTransition(0, 0);
     }
 }

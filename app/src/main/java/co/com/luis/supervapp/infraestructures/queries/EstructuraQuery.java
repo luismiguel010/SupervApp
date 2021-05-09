@@ -9,6 +9,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.UUID;
 
+import co.com.luis.supervapp.activities.EstructurasActivity;
 import co.com.luis.supervapp.builders.EstructuraBuilder;
 import co.com.luis.supervapp.domain.models.Estructura;
 import co.com.luis.supervapp.infraestructures.DBHelper;
@@ -31,6 +32,8 @@ public class EstructuraQuery {
             Long idResultante = sqLiteDatabase.insert(Utilidades.TABLA_ESTRUCTURAS, Utilidades.CAMPO_ID,contentValues);
             Toast.makeText(context, "Id Registro: "+idResultante, Toast.LENGTH_SHORT).show();
             sqLiteDatabase.close();
+            EstructurasActivity estructurasActivity = new EstructurasActivity();
+            estructurasActivity.refreshList(context);
         }
     }
 
